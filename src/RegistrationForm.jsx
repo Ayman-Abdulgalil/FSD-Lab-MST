@@ -1,5 +1,14 @@
 import { useState } from "react";
 
+// ── tiny SVG icons ──────────────────────────────────────────────
+const IconUser    = () => <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>;
+const IconMail    = () => <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 7L2 7"/></svg>;
+const IconLock    = () => <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>;
+const IconEye     = () => <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>;
+const IconEyeOff  = () => <svg width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-10-8-10-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 10 8 10 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>;
+const IconAlert   = () => <svg width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>;
+const IconCheck   = () => <svg width="28" height="28" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>;
+
 // ── helpers ─────────────────────────────────────────────────────
 const validateEmail = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
@@ -62,7 +71,7 @@ export default function RegistrationForm() {
 
           {submitted && (
             <div className="success-overlay">
-              <div className="success-icon"></div>
+              <div className="success-icon"><IconCheck /></div>
               <p className="success-title">You're all set!</p>
               <p className="success-sub">Account created successfully.<br/>Welcome aboard.</p>
             </div>
@@ -78,7 +87,7 @@ export default function RegistrationForm() {
             <div className="field">
               <label className="field-label">Full Name</label>
               <div className="field-wrap">
-                <span className="field-icon"></span>
+                <span className="field-icon"><IconUser /></span>
                 <input
                   className={inputClass("name")}
                   type="text"
@@ -90,7 +99,7 @@ export default function RegistrationForm() {
                 />
               </div>
               {touched.name && errors.name && (
-                <span className="error-msg">{errors.name}</span>
+                <span className="error-msg"><IconAlert />{errors.name}</span>
               )}
             </div>
 
@@ -98,7 +107,7 @@ export default function RegistrationForm() {
             <div className="field">
               <label className="field-label">Email Address</label>
               <div className="field-wrap">
-                <span className="field-icon"></span>
+                <span className="field-icon"><IconMail /></span>
                 <input
                   className={inputClass("email")}
                   type="email"
@@ -110,7 +119,7 @@ export default function RegistrationForm() {
                 />
               </div>
               {touched.email && errors.email && (
-                <span className="error-msg">{errors.email}</span>
+                <span className="error-msg"><IconAlert />{errors.email}</span>
               )}
             </div>
 
@@ -118,7 +127,7 @@ export default function RegistrationForm() {
             <div className="field">
               <label className="field-label">Password</label>
               <div className="field-wrap">
-                <span className="field-icon"></span>
+                <span className="field-icon"><IconLock /></span>
                 <input
                   className={inputClass("password")}
                   type={showPw ? "text" : "password"}
@@ -129,6 +138,7 @@ export default function RegistrationForm() {
                   autoComplete="new-password"
                 />
                 <button type="button" className="toggle-btn" onClick={() => setShowPw(v => !v)}>
+                  {showPw ? <IconEyeOff /> : <IconEye />}
                 </button>
               </div>
               {fields.password && (
@@ -144,7 +154,7 @@ export default function RegistrationForm() {
                 </>
               )}
               {touched.password && errors.password && (
-                <span className="error-msg">{errors.password}</span>
+                <span className="error-msg"><IconAlert />{errors.password}</span>
               )}
             </div>
 
@@ -152,7 +162,7 @@ export default function RegistrationForm() {
             <div className="field">
               <label className="field-label">Confirm Password</label>
               <div className="field-wrap">
-                <span className="field-icon"></span>
+                <span className="field-icon"><IconLock /></span>
                 <input
                   className={inputClass("confirm")}
                   type={showCf ? "text" : "password"}
@@ -163,10 +173,11 @@ export default function RegistrationForm() {
                   autoComplete="new-password"
                 />
                 <button type="button" className="toggle-btn" onClick={() => setShowCf(v => !v)}>
+                  {showCf ? <IconEyeOff /> : <IconEye />}
                 </button>
               </div>
               {touched.confirm && errors.confirm && (
-                <span className="error-msg">{errors.confirm}</span>
+                <span className="error-msg"><IconAlert />{errors.confirm}</span>
               )}
             </div>
 
