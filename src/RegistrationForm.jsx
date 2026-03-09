@@ -62,7 +62,7 @@ export default function RegistrationForm() {
 
           {submitted && (
             <div className="success-overlay">
-              <div className="success-icon"><IconCheck /></div>
+              <div className="success-icon"></div>
               <p className="success-title">You're all set!</p>
               <p className="success-sub">Account created successfully.<br/>Welcome aboard.</p>
             </div>
@@ -78,7 +78,7 @@ export default function RegistrationForm() {
             <div className="field">
               <label className="field-label">Full Name</label>
               <div className="field-wrap">
-                <span className="field-icon"><IconUser /></span>
+                <span className="field-icon"></span>
                 <input
                   className={inputClass("name")}
                   type="text"
@@ -90,7 +90,7 @@ export default function RegistrationForm() {
                 />
               </div>
               {touched.name && errors.name && (
-                <span className="error-msg"><IconAlert />{errors.name}</span>
+                <span className="error-msg">{errors.name}</span>
               )}
             </div>
 
@@ -98,7 +98,7 @@ export default function RegistrationForm() {
             <div className="field">
               <label className="field-label">Email Address</label>
               <div className="field-wrap">
-                <span className="field-icon"><IconMail /></span>
+                <span className="field-icon"></span>
                 <input
                   className={inputClass("email")}
                   type="email"
@@ -110,7 +110,7 @@ export default function RegistrationForm() {
                 />
               </div>
               {touched.email && errors.email && (
-                <span className="error-msg"><IconAlert />{errors.email}</span>
+                <span className="error-msg">{errors.email}</span>
               )}
             </div>
 
@@ -118,7 +118,7 @@ export default function RegistrationForm() {
             <div className="field">
               <label className="field-label">Password</label>
               <div className="field-wrap">
-                <span className="field-icon"><IconLock /></span>
+                <span className="field-icon"></span>
                 <input
                   className={inputClass("password")}
                   type={showPw ? "text" : "password"}
@@ -129,7 +129,6 @@ export default function RegistrationForm() {
                   autoComplete="new-password"
                 />
                 <button type="button" className="toggle-btn" onClick={() => setShowPw(v => !v)}>
-                  {showPw ? <IconEyeOff /> : <IconEye />}
                 </button>
               </div>
               {fields.password && (
@@ -145,7 +144,7 @@ export default function RegistrationForm() {
                 </>
               )}
               {touched.password && errors.password && (
-                <span className="error-msg"><IconAlert />{errors.password}</span>
+                <span className="error-msg">{errors.password}</span>
               )}
             </div>
 
@@ -153,7 +152,7 @@ export default function RegistrationForm() {
             <div className="field">
               <label className="field-label">Confirm Password</label>
               <div className="field-wrap">
-                <span className="field-icon"><IconLock /></span>
+                <span className="field-icon"></span>
                 <input
                   className={inputClass("confirm")}
                   type={showCf ? "text" : "password"}
@@ -164,11 +163,10 @@ export default function RegistrationForm() {
                   autoComplete="new-password"
                 />
                 <button type="button" className="toggle-btn" onClick={() => setShowCf(v => !v)}>
-                  {showCf ? <IconEyeOff /> : <IconEye />}
                 </button>
               </div>
               {touched.confirm && errors.confirm && (
-                <span className="error-msg"><IconAlert />{errors.confirm}</span>
+                <span className="error-msg">{errors.confirm}</span>
               )}
             </div>
 
